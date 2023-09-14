@@ -60,6 +60,8 @@ namespace MyContacts
 
                 if (repository.Login(TxtUser.Text.Trim(), TxtPassword.Text.Trim()))
                 {
+                    // هر زمانی که کاربر ورود میکند نام کاربری به متغیر مورد نظر ارسال میشود
+                    // eveytime user log in , the user name tranfer to SendText Variable 
 
                     SendText = TxtUser.Text;
                     string NameView = TxtUser.Text;

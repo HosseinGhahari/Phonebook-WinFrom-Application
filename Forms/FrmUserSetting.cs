@@ -8,6 +8,7 @@ using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,22 +49,35 @@ namespace MyContacts
         {
             // این کد مشخص میکند بر روی یک ردیف از دیتا گرید کلیک شده
             // check if row of data grid is selected
-
             if (DgUsers.CurrentRow != null) 
             {
+               
+                // در این بخش بررسی میشود که کاربری که انتخاب میکنید
+                // همان کاربری باشد که وارد برنامه شده تا اجازه بروز رسانی بدهد
+                // this section check the user you wanna edit is the same user
+                // who logged inside the app , otherwise you can't edit it
+
+                if (DgUsers.CurrentCell.Value.ToString().ToLower() != FrmLogin.SendText.ToLower())
+                {
+                    MessageBox.Show("You can't edit other Users information");
+                }
 
                 // فورم اپدیت را فراخوانی میکنیم و یوزر ای دی انتخاب شده را انتقال میدهیم به فورم اپدیت مشخصات
-                // we call update form and send the user for updating 
+                // we call update form and send the user for updating
+                else
+                {
+                    FrmUpdateUser frm = new FrmUpdateUser();
+                    int UserId = int.Parse(DgUsers.CurrentRow.Cells[0].Value.ToString());
+                    frm.UserId = UserId;
+                    frm.UpdateTxtUser.Text = DgUsers.CurrentRow.Cells[1].Value.ToString();
+                    frm.UpdateTxtPass.Text = DgUsers.CurrentRow.Cells[2].Value.ToString();
+                    frm.UpdateTxtPassRepeated.Text = DgUsers.CurrentRow.Cells[2].Value.ToString();
+                    frm.ShowDialog();
+                    DbUpdate();
 
-                FrmUpdateUser frm = new FrmUpdateUser();
-                int UserId = int.Parse(DgUsers.CurrentRow.Cells[0].Value.ToString());
-                frm.UserId = UserId;
-                frm.UpdateTxtUser.Text = DgUsers.CurrentRow.Cells[1].Value.ToString();
-                frm.UpdateTxtPass.Text = DgUsers.CurrentRow.Cells[2].Value.ToString();
-                frm.UpdateTxtPassRepeated.Text = DgUsers.CurrentRow.Cells[2].Value.ToString();
-                frm.ShowDialog();
-                DbUpdate();
-              
+                }
+
+
             }
 
         }
@@ -80,8 +94,10 @@ namespace MyContacts
 
             // در قسمت بعدی شرط چک میکند اگر کاربری که قرار است حذف شود کاربری باشد که به برنامه ورود کرده
             // اخطار میدهد در صورت حذف این کاربر از برنامه خروج پیدا میکند و کاربر حذف میشود
+            // همچنین بخش بعدی دستور شرطی مشخص میکند که شما اجازه ندارید کاربرهای دیگر را حذف کنید
             //also check if the the user you want delete is the user that is login now
             // it alarm that this action remove your info and account and you will be log out
+            // also in else if says that you can't delete other users from application
 
             if (DgUsers.CurrentRow != null)
             {
@@ -89,13 +105,15 @@ namespace MyContacts
                 {
                     MessageBox.Show("You Can't Delete All The Users");
                 }
+                else if (DgUsers.CurrentCell.Value.ToString().ToLower() != FrmLogin.SendText.ToLower())
+                {
+                    MessageBox.Show("You can't Delete other Users information");
+                }
                 else
                 {
-
                     int UserId = int.Parse(DgUsers.CurrentRow.Cells[0].Value.ToString());
-                    string UserName = DgUsers.CurrentRow.Cells[1].Value.ToString();
-                    FrmLogin frm = new FrmLogin();
-                    string LoginUserName = frm.TxtUser.Text = FrmLogin.SendText;
+                    string UserName = DgUsers.CurrentRow.Cells[1].Value.ToString();     
+                    string LoginUserName = FrmLogin.SendText;
 
                     if (LoginUserName.ToLower() == UserName.ToLower())
                     {
@@ -118,5 +136,21 @@ namespace MyContacts
             }
         }
 
+        // در این بخش ما به ایونت دیتا گرید کاربر ها دسترسی پیدا کردیم و مشخص کردیم که ستون دوم 
+        // که رمز عبور ها مشخص شده به صورت نامشخص باشند تا امنیت فراهم شود
+        // in this section we called CellFormatting Even of users datagird 
+        // to hash the password part with * so other users can't see the password
+
+        private void DgUsers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            int PassLength = 7;
+            string LoginUserName = FrmLogin.SendText;
+            if (e.ColumnIndex == 2 && e.Value != null)
+            {              
+                e.Value = new string('*', PassLength);
+            }
+
+
+        }
     }
 }

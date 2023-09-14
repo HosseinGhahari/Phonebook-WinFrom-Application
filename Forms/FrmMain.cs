@@ -27,8 +27,7 @@ namespace MyContacts
         private void DbAccess()
         {
             DgContacts.AutoGenerateColumns = false;
-            FrmLogin frm = new FrmLogin();
-            DgContacts.DataSource = repository.SelectAll(frm.TxtUser.Text = FrmLogin.SendText);
+            DgContacts.DataSource = repository.SelectAll(FrmLogin.SendText);
         }
 
 
@@ -60,8 +59,7 @@ namespace MyContacts
             // در این قسمت متن لوگین را ما از نام کاربری میگیریم و به لیبل صفحه اصلی انتقال میدهیم برای نمایش
             // send username text to label in main form for showing welcome
          
-            FrmLogin frm = new FrmLogin();
-            LblUserName.Text = frm.TxtUser.Text = "Welcome " + FrmLogin.SendText;
+            LblUserName.Text =  "Welcome " + FrmLogin.SendText;
 
             // این متد دیتا گرید را ریفرش میکند
             // update datagrid

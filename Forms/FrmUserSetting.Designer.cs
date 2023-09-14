@@ -58,6 +58,7 @@
             this.DgUsers.RowTemplate.Height = 24;
             this.DgUsers.Size = new System.Drawing.Size(660, 320);
             this.DgUsers.TabIndex = 0;
+            this.DgUsers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgUsers_CellFormatting);
             // 
             // UserId
             // 

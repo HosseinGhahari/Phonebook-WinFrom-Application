@@ -112,8 +112,7 @@ namespace MyContacts
                 {
                     // متد اینسرت فراخوانی میشود و پارامتر هایی که نیاز دارد را وارد میکنیم
                     //insert method will be call and insert will be done
-                    FrmLogin frm = new FrmLogin();
-                    repository.Insert(TxtName.Text, TxtFamily.Text, (int)TxtAge.Value, Txtphone.Text, TxtEmail.Text, TxtAddress.Text , frm.TxtUser.Text = FrmLogin.SendText);
+                    repository.Insert(TxtName.Text, TxtFamily.Text, (int)TxtAge.Value, Txtphone.Text, TxtEmail.Text, TxtAddress.Text , FrmLogin.SendText);
                     MessageBox.Show("The operation Add was successful");
                     DialogResult = DialogResult.OK;
                 }

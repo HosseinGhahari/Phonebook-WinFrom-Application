@@ -75,7 +75,7 @@
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(995, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(995, 31);
             this.toolStrip1.TabIndex = 14;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -86,7 +86,7 @@
             this.BtnNewContact.Image = ((System.Drawing.Image)(resources.GetObject("BtnNewContact.Image")));
             this.BtnNewContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnNewContact.Name = "BtnNewContact";
-            this.BtnNewContact.Size = new System.Drawing.Size(96, 24);
+            this.BtnNewContact.Size = new System.Drawing.Size(96, 28);
             this.BtnNewContact.Text = "Add Contact";
             this.BtnNewContact.Click += new System.EventHandler(this.BtnNewContact_Click);
             // 
@@ -96,7 +96,7 @@
             this.BtnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("BtnUpdate.Image")));
             this.BtnUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnUpdate.Name = "BtnUpdate";
-            this.BtnUpdate.Size = new System.Drawing.Size(100, 24);
+            this.BtnUpdate.Size = new System.Drawing.Size(100, 28);
             this.BtnUpdate.Text = "Edit Contacts";
             this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
@@ -106,7 +106,7 @@
             this.BtnDelete.Image = ((System.Drawing.Image)(resources.GetObject("BtnDelete.Image")));
             this.BtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(122, 24);
+            this.BtnDelete.Size = new System.Drawing.Size(122, 28);
             this.BtnDelete.Text = "Delete Contacts ";
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
@@ -116,7 +116,7 @@
             this.BtnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("BtnRefresh.Image")));
             this.BtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnRefresh.Name = "BtnRefresh";
-            this.BtnRefresh.Size = new System.Drawing.Size(127, 24);
+            this.BtnRefresh.Size = new System.Drawing.Size(127, 28);
             this.BtnRefresh.Text = "Update Contacts ";
             this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
             // 
@@ -126,7 +126,7 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(109, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(109, 28);
             this.toolStripButton2.Text = "Save Contacts ";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
@@ -136,7 +136,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(37, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(37, 28);
             this.toolStripButton1.Text = "Exit";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
