@@ -41,7 +41,7 @@ namespace MyContacts
 
             if (frmUserSettings.DgUsers.Rows.Count == 0)
             {
-                Application.Run(new FrmMain(FrmLogn.TxtUser.Text));
+                Application.Run(new FrmMain());
             }
             else
             {

@@ -13,13 +13,16 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Xml.Linq;
 using System.Collections.ObjectModel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Windows.Forms.LinkLabel;
+using System.ComponentModel.Design;
+using System.Windows.Forms;
 
 namespace MyContacts.Services
 {
 
     // ارث بری این کلاس از اینترفیس
     // This class inherits from the interface
-    class ContactsRepository : IContactRepository 
+    class ContactsRepository : IContactRepository
     {
 
 
@@ -29,9 +32,10 @@ namespace MyContacts.Services
         private string ConnectionString = "Data Source =.; Initial Catalog = PhoneBook_Contacts_DB ; Integrated Security=True";
 
 
+
         // این متد قابلیت درج مخاطب را به برنامه ما اضافه میکند
         // this method do the insert in our program
-        public bool Insert(string Name, string Family, int Age, string Phone, string Email, string Address)
+        public bool Insert(string Name, string Family, int Age, string Phone, string Email, string Address, string LinkName)
         {
 
             // عملیاتی که میخواهیم روی بانک انجام بدیم را ایجاد میکنیم
@@ -50,25 +54,27 @@ namespace MyContacts.Services
 
             try
             {
-                string query = "Insert Into MyContacts (Name,Family,Age,Phone,Email,Address) values (@Name ,@Family , @Age ,@Phone ,@Email ,@Address)";
+                string query = "Insert Into MyContacts (Name,Family,Age,Phone,Email,Address,LinkId) values (@Name ,@Family , @Age ,@Phone ,@Email ,@Address ,@LinkId)";
                 SqlCommand Commander = new SqlCommand(query, Connection);
+
                 Commander.Parameters.AddWithValue("@Name", Name);
                 Commander.Parameters.AddWithValue("@Family", Family);
                 Commander.Parameters.AddWithValue("@Age", Age);
                 Commander.Parameters.AddWithValue("@Phone", Phone);
                 Commander.Parameters.AddWithValue("@Email", Email);
                 Commander.Parameters.AddWithValue("@Address", Address);
+                Commander.Parameters.AddWithValue("@LinkId", LinkName);
                 Connection.Open();
                 Commander.ExecuteNonQuery();
                 return true;
             }
-            catch 
-            { 
+            catch
+            {
                 return false;
             }
-            finally 
+            finally
             {
-            Connection.Close();
+                Connection.Close();
             }
 
         }
@@ -133,13 +139,14 @@ namespace MyContacts.Services
 
         // این متد تمام اطلاعات درون بانک مخاطب ها را واکشی میکند و نشان میدهد
         // this method fetch all the data from database from contacts table
-        public DataTable SelectAll()
+        public DataTable SelectAll(string LinkName)
         {
-            string query = "Select * From MyContacts";
-            SqlConnection ConnectionDoor = new SqlConnection(ConnectionString);
-            SqlDataAdapter adapterCar = new SqlDataAdapter(query, ConnectionDoor);
+
+            string query = "Select * From MyContacts where LinkId = '"+LinkName+"' ";
+            SqlConnection Connection = new SqlConnection(ConnectionString);
+            SqlDataAdapter adapter = new SqlDataAdapter(query, Connection);
             DataTable DataReceiver = new DataTable();
-            adapterCar.Fill(DataReceiver);
+            adapter.Fill(DataReceiver);
             return DataReceiver;
         }
 
@@ -209,6 +216,41 @@ namespace MyContacts.Services
             }
         }
 
+
+        // این متد بررسی میکند که آیا یوزر نیمی که از طریق پارامتر وارد شده
+        // در این دیتا بیس بخش نام کاربری وجود دارد یا خیر که
+        // اگر وجود نداشت نمیشود با این نام ، نام کاربری جدید ساخت
+        // this method check the user that is entered via parameter
+        // is already exist in database or not if it's there , you can't add that username again
+        public bool AddUserCheck(string username)
+        {
+            SqlConnection Connection = new SqlConnection(ConnectionString);
+
+            try
+            {
+                bool result = false;
+                string query = "Select UserName From Login where UserName=@UserName";
+                SqlCommand command = new SqlCommand(query, Connection);
+                command.Parameters.AddWithValue("@UserName", username);
+                Connection.Open();
+                SqlDataReader sqlDataReader = command.ExecuteReader(); 
+
+                if (sqlDataReader.HasRows)
+                {
+                    result = true;
+                }
+                return result;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
+
         // این متد عمل درج کاربر به برنامه برای لوگین کردن را امکان پذیر میکند
         // this method do the add users
         public bool AddUser(string username, string password)
@@ -218,22 +260,22 @@ namespace MyContacts.Services
 
             try
             {
-                string query = "Insert Into Login (UserName , Password) values (@username , @password)";
+                string query = "Insert Into Login (UserName , Password) values (@username , @password) ";
                 SqlCommand commander = new SqlCommand(query, Connection);
                 commander.Parameters.AddWithValue("@UserName", username);
                 commander.Parameters.AddWithValue("@Password", password);
                 Connection.Open();
-                commander.ExecuteNonQuery();
+                commander.ExecuteNonQuery();      
                 return true;
             }
             catch
-            {
+            {           
                 return false;
             }
             finally
             {
                 Connection.Close();
-            }         
+            }
         }
 
         // این متد کاربران برنامه را بروزرسانی میکند
@@ -246,7 +288,7 @@ namespace MyContacts.Services
             try
             {
                 string query = "Update Login Set UserName = @UserName , Password = @Password Where UserId = @UserId";
-                SqlCommand commander = new SqlCommand(query,Connection);
+                SqlCommand commander = new SqlCommand(query, Connection);
                 commander.Parameters.AddWithValue("@UserId", UserId);
                 commander.Parameters.AddWithValue("@UserName", UserName);
                 commander.Parameters.AddWithValue("@Password", Password);
@@ -262,20 +304,23 @@ namespace MyContacts.Services
             {
                 Connection.Close();
             }
-          
+
         }
 
         // این متد کاربران اضافه شده را میتواند حذف کند
+        // همینطور مخاطب هایی که این کاربر اضافه کرده است حذف میکرد
         // this method delete the user we want
-        public bool DeleteUser(int UserId)
+        // also delete the contacts that this user added to program
+        public bool DeleteUser(int UserId, string Username, string LinkName)
         {
             SqlConnection Connection = new SqlConnection(ConnectionString);
 
             try
             {
-                string query = "delete from Login where UserId = @UserId";
+                string query = "delete from Login where UserId = @UserId delete from MyContacts Where LinkId = @LinkName";
                 SqlCommand commander = new SqlCommand(query, Connection);
                 commander.Parameters.AddWithValue("@UserId", UserId);
+                commander.Parameters.AddWithValue("@LinkName", LinkName);
                 Connection.Open();
                 commander.ExecuteNonQuery();
                 return true;
@@ -289,8 +334,10 @@ namespace MyContacts.Services
                 Connection.Close();
             }
 
-        
+
         }
 
+       
+
+        }
     }
-}

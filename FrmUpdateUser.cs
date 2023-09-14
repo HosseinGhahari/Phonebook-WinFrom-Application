@@ -83,10 +83,5 @@ namespace MyContacts
                 DialogResult = DialogResult.OK;
             }
         }
-
-        private void FrmUpdateUser_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

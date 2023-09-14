@@ -12,6 +12,8 @@ using System.Windows.Forms;
 
 namespace MyContacts
 {
+
+
     public partial class FrmAddOrUpdate : Form
     {
         // این متغیر برای تغییر نام فورم برای اد کردن و ویرایش کردن اضافه شده است'
@@ -110,9 +112,9 @@ namespace MyContacts
                 {
                     // متد اینسرت فراخوانی میشود و پارامتر هایی که نیاز دارد را وارد میکنیم
                     //insert method will be call and insert will be done
-
-                    repository.Insert(TxtName.Text, TxtFamily.Text, (int)TxtAge.Value, Txtphone.Text, TxtEmail.Text, TxtAddress.Text);
-                    MessageBox.Show("The operation was successful");
+                    FrmLogin frm = new FrmLogin();
+                    repository.Insert(TxtName.Text, TxtFamily.Text, (int)TxtAge.Value, Txtphone.Text, TxtEmail.Text, TxtAddress.Text , frm.TxtUser.Text = FrmLogin.SendText);
+                    MessageBox.Show("The operation Add was successful");
                     DialogResult = DialogResult.OK;
                 }
                 else

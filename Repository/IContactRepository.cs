@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,15 +16,15 @@ namespace MyContacts.Repository
         // in this program we use Ado.Net technology for accessing to database
         // We write the set of tasks we need based on a contract in the interface
 
-
-        bool Insert(string Name, string Family, int Age, string Phone, string Email, string Address);
+        bool Insert(string Name, string Family, int Age, string Phone, string Email, string Address , string LinkName);
         bool AddUser(string username, string password);
         bool Update(int ContactId, string Name, string Family, int Age, string Phone, string Email, string Address);
         bool UpdateUser(int UserId, string UserName, string Password);
         bool Delete(int ContactId);
-        bool DeleteUser(int UserId);
+        bool DeleteUser(int UserId ,string Username,string LinkName);
         bool Login(string UserName, string Password);
-        DataTable SelectAll();
+        bool AddUserCheck(string username);
+        DataTable SelectAll(string LinkName);
         DataTable SelectUsers();
         DataTable Search(string Item);
        

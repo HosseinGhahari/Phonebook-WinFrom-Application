@@ -134,7 +134,6 @@
             this.Name = "FrmUpdateUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit User";
-            this.Load += new System.EventHandler(this.FrmUpdateUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -15,10 +15,8 @@ namespace MyContacts
     public partial class FrmAddUser : Form
     {
 
-       
         // متد پر بودن تکست باکس ها
         // this method check if the textboxs are fill or not
-
         public bool IsValid()
         {
             bool isValid = true;
@@ -46,9 +44,8 @@ namespace MyContacts
             else
             {
                 return isValid;
-            }         
+            }
         }
-
 
 
         IContactRepository repository;
@@ -64,19 +61,34 @@ namespace MyContacts
             this.Close();
         }
 
-        private void BtnLogin_Click(object sender, EventArgs e)
+        private void BtnAdd_Click(object sender, EventArgs e)
         {
             // در این قسمت عمل ایجاد کاربر جدید انجام میشود و اطلاعات همچنین وارد بانک میشود
+            // در ادامه متد بررسی کاربر ها فراخوانی میشود و اگر نام کاربری وارد شده
+            // با نام کاربری درون بانک یکی باشد ، نمیتوان آن نام کاربری را اضافه کرد
             //in this section use add happen via method inside of ContactsRepository and data add to database
-
+            // In the following Addusercheck method will call out and if the username
+            // that we entered exist error appear cos username already exists
             if (IsValid())
             {
-                repository.AddUser(AddTxtUser.Text, AddTxtPassword.Text);
-                MessageBox.Show("New Contact Added");
-                this.Close(); 
+                if (repository.AddUserCheck(AddTxtUser.Text))
+                {
+                    MessageBox.Show("Username is already taken , Please pick another one");
+                }
+                else
+                {
+                    repository.AddUser(AddTxtUser.Text, AddTxtPassword.Text);
+                    MessageBox.Show("New Contact Added");
+                    this.Close();
+                }     
             }
+
+
+
         }
 
+        
+        }
 
     }
-}
+

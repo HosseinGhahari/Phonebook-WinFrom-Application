@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.DgUsers = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.BtnRemoveUsers = new System.Windows.Forms.Button();
-            this.BtnUpdateUsers = new System.Windows.Forms.Button();
             this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.BtnRemoveUsers = new System.Windows.Forms.Button();
+            this.BtnUpdateUsers = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgUsers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +58,31 @@
             this.DgUsers.RowTemplate.Height = 24;
             this.DgUsers.Size = new System.Drawing.Size(660, 320);
             this.DgUsers.TabIndex = 0;
+            // 
+            // UserId
+            // 
+            this.UserId.DataPropertyName = "UserId";
+            this.UserId.HeaderText = "آی دی";
+            this.UserId.MinimumWidth = 6;
+            this.UserId.Name = "UserId";
+            this.UserId.ReadOnly = true;
+            this.UserId.Visible = false;
+            // 
+            // UserName
+            // 
+            this.UserName.DataPropertyName = "UserName";
+            this.UserName.HeaderText = "User Name";
+            this.UserName.MinimumWidth = 6;
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            // 
+            // Password
+            // 
+            this.Password.DataPropertyName = "Password";
+            this.Password.HeaderText = "Password";
+            this.Password.MinimumWidth = 6;
+            this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -91,31 +116,6 @@
             this.BtnUpdateUsers.Text = "Edit";
             this.BtnUpdateUsers.UseVisualStyleBackColor = true;
             this.BtnUpdateUsers.Click += new System.EventHandler(this.BtnUpdateUsers_Click);
-            // 
-            // UserId
-            // 
-            this.UserId.DataPropertyName = "UserId";
-            this.UserId.HeaderText = "آی دی";
-            this.UserId.MinimumWidth = 6;
-            this.UserId.Name = "UserId";
-            this.UserId.ReadOnly = true;
-            this.UserId.Visible = false;
-            // 
-            // UserName
-            // 
-            this.UserName.DataPropertyName = "UserName";
-            this.UserName.HeaderText = "User Name";
-            this.UserName.MinimumWidth = 6;
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            // 
-            // Password
-            // 
-            this.Password.DataPropertyName = "Password";
-            this.Password.HeaderText = "Password";
-            this.Password.MinimumWidth = 6;
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
             // 
             // FrmUserSetting
             // 

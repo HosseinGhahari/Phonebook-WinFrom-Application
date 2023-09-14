@@ -14,7 +14,9 @@ namespace MyContacts
 {
     public partial class FrmLogin : Form
     {
-
+        // ما این متغیر را تعریف کردیم تا بتوانیم مقدار نام کاربری صفحه لوگین را به فورم های دیگر انتقال دهیم
+        // we this variable we are able to tranfer login username value to another form 
+        public static string SendText = "";
 
         // متد بررسی پر بودن تکست باکس ها مثل همیشه
         // textboxs fill check
@@ -35,7 +37,7 @@ namespace MyContacts
             return isValid;
         }
 
-              
+
         IContactRepository repository;
         public FrmLogin()
         {
@@ -58,10 +60,12 @@ namespace MyContacts
 
                 if (repository.Login(TxtUser.Text.Trim(), TxtPassword.Text.Trim()))
                 {
+
+                    SendText = TxtUser.Text;
                     string NameView = TxtUser.Text;
                     MessageBox.Show($"{NameView} Signed in");
                     this.Hide();
-                    FrmMain form1 = new FrmMain(TxtUser.Text);
+                    FrmMain form1 = new FrmMain();
                     form1.ShowDialog();
                     this.Close();
                 }
@@ -70,28 +74,9 @@ namespace MyContacts
                     MessageBox.Show("UserName or Password is Incorrect");
                 }
             }
-        }
 
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-
-            // در اینجا یک نمونه از فورم اصلی ایجاد میکنیم 
-            // و جای پارامتر آن مقدار تکست باکس یوزر نیم را وارد میکنیم
-            // و این مقدار به پارامتر فورم اصلی انتقال داده میشود
-            // و در لیبل نمایش داده میشه
-            // we made a sample of main form
-            // and we gave it a parameter , and that parameter is
-            // user name textbox , data of that will be transfer to
-            // label of main form for showing welcome to entered user
-
-
-            FrmMain frm = new FrmMain(TxtUser.Text);  
-
-        }
-
-        private void FrmLogin_Load_1(object sender, EventArgs e)
-        {
 
         }
     }
 }
+

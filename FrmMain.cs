@@ -27,7 +27,8 @@ namespace MyContacts
         private void DbAccess()
         {
             DgContacts.AutoGenerateColumns = false;
-            DgContacts.DataSource = repository.SelectAll();
+            FrmLogin frm = new FrmLogin();
+            DgContacts.DataSource = repository.SelectAll(frm.TxtUser.Text = FrmLogin.SendText);
         }
 
 
@@ -43,7 +44,7 @@ namespace MyContacts
         // This parameter is supposed to take the username from the login page
         // and transfer it to the main form
 
-        public FrmMain(string UserName)
+        public FrmMain()
         {
             // یک نمونه میسازیم تا بتوانیم دسترسی داشته باشیم
             // We create a sample so that we can have access
@@ -51,18 +52,19 @@ namespace MyContacts
             InitializeComponent();
             repository = new ContactsRepository(); 
 
-            // به لیبل صفحه اصلی گفتیم این نام کاربری را از پارامتر متد فورم بگیر
-            // we say to label in main from that take that parameter from main form
-
-            LblUserName.Text = " Welcome " + UserName ;
         }
 
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            // در این قسمت متن لوگین را ما از نام کاربری میگیریم و به لیبل صفحه اصلی انتقال میدهیم برای نمایش
+            // send username text to label in main form for showing welcome
+         
+            FrmLogin frm = new FrmLogin();
+            LblUserName.Text = frm.TxtUser.Text = "Welcome " + FrmLogin.SendText;
+
             // این متد دیتا گرید را ریفرش میکند
             // update datagrid
-
             DbAccess();
         }
 
@@ -142,6 +144,7 @@ namespace MyContacts
                 frm.ContactId = ContactId;
 
                 /// در این قسمت تمام اطلاعات دیتا گرید برای بروز رسانی درون تکست باکس قرار میگیرد
+                /// in this section all the data for updating tranfer to textboxs for edit
                 frm.TxtName.Text = DgContacts.CurrentRow.Cells[1].Value.ToString();
                 frm.TxtFamily.Text = DgContacts.CurrentRow.Cells[2].Value.ToString();
                 frm.TxtAge.Text = DgContacts.CurrentRow.Cells[3].Value.ToString();
@@ -206,13 +209,18 @@ namespace MyContacts
                         write.WriteLine("Phone : " + row.Cells[4].Value.ToString());
                         write.WriteLine("Email : " + row.Cells[5].Value.ToString());
                         write.WriteLine("Address : " + row.Cells[6].Value.ToString());
-                        write.WriteLine("");
+                        write.WriteLine("");    
                     }
                     MessageBox.Show("Data is saved");
                 }
             }
 
            
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
