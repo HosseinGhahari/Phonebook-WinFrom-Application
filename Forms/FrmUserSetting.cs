@@ -86,9 +86,8 @@ namespace MyContacts
         {
 
             // در این قسمت ما عمل حذف کاربرهای نرم افزار را انجام میدهیم
-            // اگر دیتا گرید ما تنها یک عضو یا کاربر داشته باشد امکان حذف ان وجود ندارد
             // همچنین بعد حذف کاربر ، مخاطب هایی که او اضافه کرده هم حذف میشود
-            // delete happen and if the datagird only have one user , delete can't happen
+            // in this section we do user delete
             // also delete the contacts that this user added to program
 
 
@@ -101,11 +100,7 @@ namespace MyContacts
 
             if (DgUsers.CurrentRow != null)
             {
-                if (DgUsers.Rows.Count <= 1)
-                {
-                    MessageBox.Show("You Can't Delete All The Users");
-                }
-                else if (DgUsers.CurrentCell.Value.ToString().ToLower() != FrmLogin.SendText.ToLower())
+                if (DgUsers.CurrentCell.Value.ToString().ToLower() != FrmLogin.SendText.ToLower())
                 {
                     MessageBox.Show("You can't Delete other Users information");
                 }
