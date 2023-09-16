@@ -155,13 +155,17 @@ namespace MyContacts
         }
 
 
-
-
         // عمل جستجو را انجام میدهد ، دیتا گرید را وصل میکنیم به متد سرچ و نتیجه را نشان میدهد
+        // در این بخش عمل جستجو فقط با توجه به شخصی که وارد برنامه شده درون بانک بین اطلاعات انجام میشود
         // do search opreation and we connect datagrid source to search method
+        // search method only search for the contacts based on user that log in to application
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
-            DgContacts.DataSource = repository.Search(TxtSearch.Text);
+            DgContacts.DataSource = repository.Search(TxtSearch.Text ,FrmLogin.SendText);
+            if (string.IsNullOrEmpty(TxtSearch.Text))
+            {
+                DbAccess();
+            }
         }
 
 
