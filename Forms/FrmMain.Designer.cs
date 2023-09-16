@@ -51,6 +51,7 @@
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.BtnNewUser = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.BtnLogOut = new System.Windows.Forms.Button();
             this.BtnManage = new System.Windows.Forms.Button();
             this.myContactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.LblUserName = new System.Windows.Forms.Label();
@@ -78,7 +79,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(995, 31);
             this.toolStrip1.TabIndex = 14;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // BtnNewContact
             // 
@@ -241,7 +241,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(487, 105);
+            this.groupBox2.Size = new System.Drawing.Size(445, 105);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
@@ -258,21 +258,21 @@
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(219, 32);
+            this.TxtSearch.Location = new System.Drawing.Point(216, 38);
             this.TxtSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtSearch.Multiline = true;
             this.TxtSearch.Name = "TxtSearch";
-            this.TxtSearch.Size = new System.Drawing.Size(226, 51);
+            this.TxtSearch.Size = new System.Drawing.Size(190, 43);
             this.TxtSearch.TabIndex = 0;
             this.TxtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // BtnNewUser
             // 
             this.BtnNewUser.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNewUser.Location = new System.Drawing.Point(222, 30);
+            this.BtnNewUser.Location = new System.Drawing.Point(326, 30);
             this.BtnNewUser.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnNewUser.Name = "BtnNewUser";
-            this.BtnNewUser.Size = new System.Drawing.Size(140, 53);
+            this.BtnNewUser.Size = new System.Drawing.Size(118, 53);
             this.BtnNewUser.TabIndex = 2;
             this.BtnNewUser.Text = "Add User";
             this.BtnNewUser.UseVisualStyleBackColor = true;
@@ -280,24 +280,38 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.BtnLogOut);
             this.groupBox3.Controls.Add(this.BtnManage);
             this.groupBox3.Controls.Add(this.BtnNewUser);
-            this.groupBox3.Location = new System.Drawing.Point(550, 59);
+            this.groupBox3.Location = new System.Drawing.Point(498, 59);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox3.Size = new System.Drawing.Size(408, 105);
+            this.groupBox3.Size = new System.Drawing.Size(460, 105);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Settings ";
             // 
+            // BtnLogOut
+            // 
+            this.BtnLogOut.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLogOut.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.BtnLogOut.Location = new System.Drawing.Point(21, 30);
+            this.BtnLogOut.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnLogOut.Name = "BtnLogOut";
+            this.BtnLogOut.Size = new System.Drawing.Size(117, 53);
+            this.BtnLogOut.TabIndex = 4;
+            this.BtnLogOut.Text = "Log out";
+            this.BtnLogOut.UseVisualStyleBackColor = true;
+            this.BtnLogOut.Click += new System.EventHandler(this.BtnLogOut_Click);
+            // 
             // BtnManage
             // 
             this.BtnManage.Font = new System.Drawing.Font("IRANSans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnManage.Location = new System.Drawing.Point(55, 30);
+            this.BtnManage.Location = new System.Drawing.Point(154, 30);
             this.BtnManage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnManage.Name = "BtnManage";
-            this.BtnManage.Size = new System.Drawing.Size(150, 53);
+            this.BtnManage.Size = new System.Drawing.Size(155, 53);
             this.BtnManage.TabIndex = 3;
             this.BtnManage.Text = "User management";
             this.BtnManage.UseVisualStyleBackColor = true;
@@ -370,6 +384,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         public System.Windows.Forms.DataGridView DgContacts;
+        private System.Windows.Forms.Button BtnLogOut;
     }
 }
 

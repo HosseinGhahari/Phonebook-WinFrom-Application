@@ -59,7 +59,7 @@ namespace MyContacts
             // در این قسمت متن لوگین را ما از نام کاربری میگیریم و به لیبل صفحه اصلی انتقال میدهیم برای نمایش
             // send username text to label in main form for showing welcome
          
-            LblUserName.Text =  "Welcome " + FrmLogin.SendText;
+            LblUserName.Text =  "Welcome " + FrmLogin.SendText.ToLower();
 
             // این متد دیتا گرید را ریفرش میکند
             // update datagrid
@@ -216,9 +216,14 @@ namespace MyContacts
            
         }
 
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
+        // دکمه مورد نظر عمل خارج شدن از حساب کاربری را انجام میدهد
+        // this code do the log out action and go to login form
+        private void BtnLogOut_Click(object sender, EventArgs e)
+        { 
+           this.Hide();
+           FrmLogin frm = new FrmLogin();
+           frm.ShowDialog();
+           this.Close();
         }
     }
 }
