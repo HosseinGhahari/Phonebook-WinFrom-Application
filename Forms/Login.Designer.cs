@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.BtnLogin = new System.Windows.Forms.Button();
-            this.BtnExit = new System.Windows.Forms.Button();
+            this.BtnSignIn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtUser = new System.Windows.Forms.TextBox();
             this.TxtPassword = new System.Windows.Forms.TextBox();
@@ -38,28 +38,31 @@
             // 
             // BtnLogin
             // 
-            this.BtnLogin.Location = new System.Drawing.Point(222, 357);
+            this.BtnLogin.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.BtnLogin.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnLogin.Location = new System.Drawing.Point(89, 310);
             this.BtnLogin.Name = "BtnLogin";
-            this.BtnLogin.Size = new System.Drawing.Size(104, 51);
+            this.BtnLogin.Size = new System.Drawing.Size(246, 51);
             this.BtnLogin.TabIndex = 0;
             this.BtnLogin.Text = "Login";
-            this.BtnLogin.UseVisualStyleBackColor = true;
+            this.BtnLogin.UseVisualStyleBackColor = false;
             this.BtnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
-            // BtnExit
+            // BtnSignIn
             // 
-            this.BtnExit.Location = new System.Drawing.Point(99, 357);
-            this.BtnExit.Name = "BtnExit";
-            this.BtnExit.Size = new System.Drawing.Size(104, 51);
-            this.BtnExit.TabIndex = 1;
-            this.BtnExit.Text = "Exit";
-            this.BtnExit.UseVisualStyleBackColor = true;
-            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
+            this.BtnSignIn.Location = new System.Drawing.Point(89, 370);
+            this.BtnSignIn.Name = "BtnSignIn";
+            this.BtnSignIn.Size = new System.Drawing.Size(246, 51);
+            this.BtnSignIn.TabIndex = 1;
+            this.BtnSignIn.Text = "Add User";
+            this.BtnSignIn.UseVisualStyleBackColor = true;
+            this.BtnSignIn.Click += new System.EventHandler(this.BtnSignIn_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(89, 84);
+            this.label1.Location = new System.Drawing.Point(89, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 30);
             this.label1.TabIndex = 2;
@@ -67,7 +70,7 @@
             // 
             // TxtUser
             // 
-            this.TxtUser.Location = new System.Drawing.Point(89, 124);
+            this.TxtUser.Location = new System.Drawing.Point(89, 107);
             this.TxtUser.Multiline = true;
             this.TxtUser.Name = "TxtUser";
             this.TxtUser.Size = new System.Drawing.Size(246, 45);
@@ -75,7 +78,7 @@
             // 
             // TxtPassword
             // 
-            this.TxtPassword.Location = new System.Drawing.Point(89, 245);
+            this.TxtPassword.Location = new System.Drawing.Point(89, 208);
             this.TxtPassword.Multiline = true;
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.PasswordChar = '*';
@@ -85,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(89, 203);
+            this.label2.Location = new System.Drawing.Point(89, 170);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 30);
             this.label2.TabIndex = 4;
@@ -100,7 +103,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TxtUser);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.BtnExit);
+            this.Controls.Add(this.BtnSignIn);
             this.Controls.Add(this.BtnLogin);
             this.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -116,7 +119,7 @@
         #endregion
 
         private System.Windows.Forms.Button BtnLogin;
-        private System.Windows.Forms.Button BtnExit;
+        private System.Windows.Forms.Button BtnSignIn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox TxtUser;

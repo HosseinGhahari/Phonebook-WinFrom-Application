@@ -47,7 +47,7 @@ namespace MyContacts
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -78,6 +78,12 @@ namespace MyContacts
             }
 
 
+        }
+
+        private void BtnSignIn_Click(object sender, EventArgs e)
+        {
+            FrmAddUser frm = new FrmAddUser();
+            frm.ShowDialog();
         }
     }
 }
