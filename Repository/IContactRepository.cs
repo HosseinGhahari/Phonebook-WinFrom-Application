@@ -16,9 +16,9 @@ namespace MyContacts.Repository
         // in this program we use Ado.Net technology for accessing to database
         // We write the set of tasks we need based on a contract in the interface
 
-        bool Insert(string Name, string Family, int Age, string Phone, string Email, string Address , string LinkName);
+        bool Insert(string Name, string Family, string Age, string Phone, string Email, string Address , string LinkName);
         bool AddUser(string username, string password);
-        bool Update(int ContactId, string Name, string Family, int Age, string Phone, string Email, string Address);
+        bool Update(int ContactId, string Name, string Family, string Age, string Phone, string Email, string Address);
         bool UpdateUser(int UserId, string UserName, string Password);
         bool Delete(int ContactId);
         bool DeleteUser(int UserId ,string Username,string LinkName);

@@ -35,7 +35,7 @@ namespace MyContacts.Services
 
         // این متد قابلیت درج مخاطب را به برنامه ما اضافه میکند
         // this method do the insert in our program
-        public bool Insert(string Name, string Family, int Age, string Phone, string Email, string Address, string LinkName)
+        public bool Insert(string Name, string Family, string Age, string Phone, string Email, string Address, string LinkName)
         {
 
             // عملیاتی که میخواهیم روی بانک انجام بدیم را ایجاد میکنیم
@@ -106,7 +106,7 @@ namespace MyContacts.Services
 
         // این متد قابلیت بروزرسانی مخاطب را به برنامه ما اضافه میکند
         // this method do the update of contacts in our program
-        public bool Update(int ContactId, string Name, string Family, int Age, string Phone, string Email, string Address)
+        public bool Update(int ContactId, string Name, string Family, string Age, string Phone, string Email, string Address)
         {
             SqlConnection Connection = new SqlConnection(ConnectionString);
 

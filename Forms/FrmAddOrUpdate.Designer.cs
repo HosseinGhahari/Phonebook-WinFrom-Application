@@ -33,31 +33,30 @@
             this.BtnSubmit = new System.Windows.Forms.Button();
             this.TxtAddress = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.Txtphone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.TxtEmail = new System.Windows.Forms.TextBox();
-            this.TxtAge = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.TxtFamily = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtName = new System.Windows.Forms.TextBox();
+            this.TxtAge = new System.Windows.Forms.TextBox();
+            this.Txtphone = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtAge)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Txtphone);
+            this.groupBox1.Controls.Add(this.TxtAge);
             this.groupBox1.Controls.Add(this.BtnExit);
             this.groupBox1.Controls.Add(this.BtnSubmit);
             this.groupBox1.Controls.Add(this.TxtAddress);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.Txtphone);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.TxtEmail);
-            this.groupBox1.Controls.Add(this.TxtAge);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.TxtFamily);
@@ -109,14 +108,6 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Address";
             // 
-            // Txtphone
-            // 
-            this.Txtphone.CausesValidation = false;
-            this.Txtphone.Location = new System.Drawing.Point(431, 122);
-            this.Txtphone.Name = "Txtphone";
-            this.Txtphone.Size = new System.Drawing.Size(173, 33);
-            this.Txtphone.TabIndex = 11;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -142,17 +133,10 @@
             this.TxtEmail.Size = new System.Drawing.Size(496, 33);
             this.TxtEmail.TabIndex = 8;
             // 
-            // TxtAge
-            // 
-            this.TxtAge.Location = new System.Drawing.Point(108, 120);
-            this.TxtAge.Name = "TxtAge";
-            this.TxtAge.Size = new System.Drawing.Size(173, 33);
-            this.TxtAge.TabIndex = 7;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(45, 120);
+            this.label3.Location = new System.Drawing.Point(45, 125);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 30);
             this.label3.TabIndex = 6;
@@ -190,6 +174,22 @@
             this.TxtName.Size = new System.Drawing.Size(173, 33);
             this.TxtName.TabIndex = 0;
             // 
+            // TxtAge
+            // 
+            this.TxtAge.Location = new System.Drawing.Point(108, 125);
+            this.TxtAge.Name = "TxtAge";
+            this.TxtAge.Size = new System.Drawing.Size(173, 33);
+            this.TxtAge.TabIndex = 17;
+            this.TxtAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtAge_KeyPress);
+            // 
+            // Txtphone
+            // 
+            this.Txtphone.Location = new System.Drawing.Point(431, 125);
+            this.Txtphone.Name = "Txtphone";
+            this.Txtphone.Size = new System.Drawing.Size(173, 33);
+            this.Txtphone.TabIndex = 18;
+            this.Txtphone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtphone_KeyPress);
+            // 
             // FrmAddOrUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 27F);
@@ -205,7 +205,6 @@
             this.Load += new System.EventHandler(this.FrmAddOrUpdate_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TxtAge)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -223,9 +222,9 @@
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox TxtFamily;
         public System.Windows.Forms.TextBox TxtName;
-        public System.Windows.Forms.TextBox Txtphone;
         public System.Windows.Forms.TextBox TxtEmail;
-        public System.Windows.Forms.NumericUpDown TxtAge;
         public System.Windows.Forms.TextBox TxtAddress;
+        public System.Windows.Forms.TextBox Txtphone;
+        public System.Windows.Forms.TextBox TxtAge;
     }
 }
