@@ -26,7 +26,7 @@ namespace MyContacts.Repository
         bool AddUserCheck(string username);
         DataTable SelectAll(string LinkName);
         DataTable SelectUsers();
-        DataTable Search(string Item,string LinkName);
+        DataTable Search(string LinkName,string Item);
        
        
         

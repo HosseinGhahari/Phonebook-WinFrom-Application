@@ -161,7 +161,8 @@ namespace MyContacts
         // search method only search for the contacts based on user that log in to application
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
-            DgContacts.DataSource = repository.Search(TxtSearch.Text ,FrmLogin.SendText);
+
+            DgContacts.DataSource = repository.Search(FrmLogin.SendText.Trim(),TxtSearch.Text.Trim());
             if (string.IsNullOrEmpty(TxtSearch.Text))
             {
                 DbAccess();

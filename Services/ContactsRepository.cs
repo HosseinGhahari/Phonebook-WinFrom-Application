@@ -164,7 +164,7 @@ namespace MyContacts.Services
 
         // عمل سرچ در دفترچه تلفن بر اساس نام و نام خانوادگی
         // this method do the search in contacts
-        public DataTable Search(string item , string LinkName)
+        public DataTable Search(string LinkName, string Item)
         {
             // کلمه کلیدی لایک در بانک عمل جتسجو را انجام میدهد
             // علامت % در اخر متغیر به معنی جستجوی اولین حروف کلمه میباشد
@@ -173,11 +173,11 @@ namespace MyContacts.Services
             // and % in the end of variable means search the first letter of word
             // also search work base on user that log in to applcation
 
-            string query = "Select * From MyContacts Where LinkId = @LinkName And Name like @item or Family like @item ";
+            string query = "Select * From MyContacts Where LinkId = @LinkName And Name like @item UNION Select * From MyContacts Where LinkId = @LinkName And Family like @item";
             SqlConnection connection = new SqlConnection(ConnectionString);
             SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-            adapter.SelectCommand.Parameters.AddWithValue("@item", "%" + item + "%");
             adapter.SelectCommand.Parameters.AddWithValue("@LinkName", LinkName);
+            adapter.SelectCommand.Parameters.AddWithValue("@item", "%" + Item + "%");
             DataTable DataReceiver = new DataTable();
             adapter.Fill(DataReceiver);
             return DataReceiver;
