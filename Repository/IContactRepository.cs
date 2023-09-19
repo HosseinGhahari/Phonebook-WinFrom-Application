@@ -22,6 +22,7 @@ namespace MyContacts.Repository
         bool UpdateUser(int UserId, string UserName, string Password);
         bool Delete(int ContactId);
         bool DeleteUser(int UserId ,string Username,string LinkName);
+        bool DeleteAll(string LinkName);
         bool Login(string UserName, string Password);
         bool AddUserCheck(string username);
         DataTable SelectAll(string LinkName);

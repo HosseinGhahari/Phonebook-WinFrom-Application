@@ -34,9 +34,10 @@
             this.BtnNewContact = new System.Windows.Forms.ToolStripButton();
             this.BtnUpdate = new System.Windows.Forms.ToolStripButton();
             this.BtnDelete = new System.Windows.Forms.ToolStripButton();
+            this.BtnDeleteAll = new System.Windows.Forms.ToolStripButton();
             this.BtnRefresh = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.BtnSave = new System.Windows.Forms.ToolStripButton();
+            this.BtnExit = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DgContacts = new System.Windows.Forms.DataGridView();
             this.ContactId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,9 +74,10 @@
             this.BtnNewContact,
             this.BtnUpdate,
             this.BtnDelete,
+            this.BtnDeleteAll,
             this.BtnRefresh,
-            this.toolStripButton2,
-            this.toolStripButton1});
+            this.BtnSave,
+            this.BtnExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(995, 27);
@@ -112,6 +114,16 @@
             this.BtnDelete.Text = "Delete Contacts ";
             this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
+            // BtnDeleteAll
+            // 
+            this.BtnDeleteAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnDeleteAll.Image = ((System.Drawing.Image)(resources.GetObject("BtnDeleteAll.Image")));
+            this.BtnDeleteAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnDeleteAll.Name = "BtnDeleteAll";
+            this.BtnDeleteAll.Size = new System.Drawing.Size(79, 24);
+            this.BtnDeleteAll.Text = "Delete All";
+            this.BtnDeleteAll.Click += new System.EventHandler(this.BtnDeleteAll_Click);
+            // 
             // BtnRefresh
             // 
             this.BtnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -122,25 +134,25 @@
             this.BtnRefresh.Text = "Update Contacts ";
             this.BtnRefresh.Click += new System.EventHandler(this.BtnRefresh_Click);
             // 
-            // toolStripButton2
+            // BtnSave
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(109, 24);
-            this.toolStripButton2.Text = "Save Contacts ";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.BtnSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnSave.Image = ((System.Drawing.Image)(resources.GetObject("BtnSave.Image")));
+            this.BtnSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(109, 24);
+            this.BtnSave.Text = "Save Contacts ";
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // toolStripButton1
+            // BtnExit
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(37, 24);
-            this.toolStripButton1.Text = "Exit";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.BtnExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.BtnExit.Image = ((System.Drawing.Image)(resources.GetObject("BtnExit.Image")));
+            this.BtnExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.Size = new System.Drawing.Size(37, 24);
+            this.BtnExit.Text = "Exit";
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // groupBox1
             // 
@@ -335,7 +347,7 @@
             this.LabelContacts.AutoSize = true;
             this.LabelContacts.BackColor = System.Drawing.Color.AliceBlue;
             this.LabelContacts.Font = new System.Drawing.Font("IRANSans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelContacts.Location = new System.Drawing.Point(592, 2);
+            this.LabelContacts.Location = new System.Drawing.Point(591, 2);
             this.LabelContacts.Name = "LabelContacts";
             this.LabelContacts.Size = new System.Drawing.Size(188, 27);
             this.LabelContacts.TabIndex = 19;
@@ -391,7 +403,7 @@
         private System.Windows.Forms.ToolStripButton BtnNewContact;
         private System.Windows.Forms.ToolStripButton BtnRefresh;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton BtnExit;
         private System.Windows.Forms.ToolStripButton BtnUpdate;
         private System.Windows.Forms.ToolStripButton BtnDelete;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -401,7 +413,7 @@
         private System.Windows.Forms.TextBox TxtSearch;
         public System.Windows.Forms.Button BtnManage;
         public System.Windows.Forms.Label LblUserName;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton BtnSave;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContactId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Names;
         private System.Windows.Forms.DataGridViewTextBoxColumn Family;
@@ -413,6 +425,7 @@
         private System.Windows.Forms.Button BtnLogOut;
         public System.Windows.Forms.Label LabelContacts;
         public System.Windows.Forms.Label lblContactsCount;
+        private System.Windows.Forms.ToolStripButton BtnDeleteAll;
     }
 }
 

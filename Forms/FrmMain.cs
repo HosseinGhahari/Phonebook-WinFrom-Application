@@ -31,6 +31,12 @@ namespace MyContacts
         }
 
 
+        // این متد برای اپدیت نگه داشتن تعداد مخاطب ها بعد از عملیات هایی مثل حذف و اضافه و.. استفاده میشود
+        private void ContactsCount()
+        {
+            lblContactsCount.Text = DgContacts.Rows.Count.ToString();
+        }
+
         // به اینترفیس با نام یک متغیر جدید دسترسی پیدا میکنیم
         // we get access to interface with a var name
 
@@ -49,19 +55,17 @@ namespace MyContacts
             // We create a sample so that we can have access
 
             InitializeComponent();
-            repository = new ContactsRepository(); 
+            repository = new ContactsRepository();
         }
 
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
 
-
-
             // در این قسمت متن لوگین را ما از نام کاربری میگیریم و به لیبل صفحه اصلی انتقال میدهیم برای نمایش
             // send username text to label in main form for showing welcome
 
-            LblUserName.Text =  "Welcome " + FrmLogin.SendText.ToLower();
+            LblUserName.Text = "Welcome " + FrmLogin.SendText.ToLower();
 
             // این متد دیتا گرید را ریفرش میکند
             // update datagrid
@@ -69,8 +73,7 @@ namespace MyContacts
 
             // تعداد مخاطب هان را نشان میدهد
             // show numbers of contacts
-            lblContactsCount.Text = DgContacts.Rows.Count.ToString();
-
+            ContactsCount();
         }
 
 
@@ -92,6 +95,7 @@ namespace MyContacts
             if (Frm.ShowDialog() == DialogResult.OK)
             {
                 DbAccess();
+                ContactsCount();
             }
         }
 
@@ -123,6 +127,7 @@ namespace MyContacts
                     int ContactId = int.Parse(DgContacts.CurrentRow.Cells[0].Value.ToString());
                     repository.Delete(ContactId);
                     DbAccess();
+                    ContactsCount();
                 }
             }
             else
@@ -158,6 +163,7 @@ namespace MyContacts
                 frm.TxtAddress.Text = DgContacts.CurrentRow.Cells[6].Value.ToString();
                 frm.ShowDialog();
                 DbAccess();
+               
             }
         }
 
@@ -169,7 +175,7 @@ namespace MyContacts
         private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
 
-            DgContacts.DataSource = repository.Search(FrmLogin.SendText.Trim(),TxtSearch.Text.Trim());
+            DgContacts.DataSource = repository.Search(FrmLogin.SendText.Trim(), TxtSearch.Text.Trim());
             if (string.IsNullOrEmpty(TxtSearch.Text))
             {
                 DbAccess();
@@ -219,27 +225,80 @@ namespace MyContacts
                         write.WriteLine("Phone : " + row.Cells[4].Value.ToString());
                         write.WriteLine("Email : " + row.Cells[5].Value.ToString());
                         write.WriteLine("Address : " + row.Cells[6].Value.ToString());
-                        write.WriteLine("");    
+                        write.WriteLine("");
                     }
                     MessageBox.Show("Data is saved");
                 }
             }
 
-           
+
         }
 
         // دکمه مورد نظر عمل خارج شدن از حساب کاربری را انجام میدهد
         // this code do the log out action and go to login form
         private void BtnLogOut_Click(object sender, EventArgs e)
-        { 
-           this.Hide();
-           FrmLogin frm = new FrmLogin();
-           frm.ShowDialog();
-           this.Close();
+        {
+            this.Hide();
+            FrmLogin frm = new FrmLogin();
+            frm.ShowDialog();
+            this.Close();
+        }
+
+        private void BtnDeleteAll_Click(object sender, EventArgs e)
+        {
+            // این این بخش متد حذف همه مخاطب های کاربر وارد شده صدا زده میشود و تمام مخاطب ها حذف میشود
+            // Delete All Contacts via DeleteAll Method 
+
+            if (MessageBox.Show("Are you sure you want to delete all contacts ?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                repository.DeleteAll(FrmLogin.SendText.ToLower());
+                DbAccess();
+                ContactsCount();
+                MessageBox.Show("All contacts has been removed");
+            }
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            // این قسمت مربوط به ذخیر مخاطب است
+            // در این قسمت اول پنجره سیو کردن باز میشود فورمت سیو نام ان مشخص میشود
+            // و در صورت زدن دکمه ذخیر در یک حلقه تکرار تکتک سطر ها اطلاعاتشون خوانده میشود و ذخیره میشود
+            // in this section we can save contacs name inside of a text file
+            // first we open the save window and we specify format and name 
+            // then inside of a foreach loop , we get all the rows data and save it 
+
+            SaveFileDialog savetext = new SaveFileDialog();
+            savetext.Filter = "Text File|*.txt";
+            savetext.Title = "Save a Text File";
+            savetext.FileName = "ContactsSave";
+            if (savetext.ShowDialog() == DialogResult.OK)
+            {
+                using (StreamWriter write = new StreamWriter(savetext.FileName))
+
+                {
+                    write.WriteLine("Your Contact Info : ");
+                    foreach (DataGridViewRow row in DgContacts.Rows)
+                    {
+                        write.WriteLine("");
+                        write.WriteLine("Name : " + row.Cells[1].Value.ToString());
+                        write.WriteLine("Last Name : " + row.Cells[2].Value.ToString());
+                        write.WriteLine("Age : " + row.Cells[3].Value.ToString());
+                        write.WriteLine("Phone : " + row.Cells[4].Value.ToString());
+                        write.WriteLine("Email : " + row.Cells[5].Value.ToString());
+                        write.WriteLine("Address : " + row.Cells[6].Value.ToString());
+                        write.WriteLine("");
+                    }
+                    MessageBox.Show("Data is saved");
+                }
+            }
         }
     }
 }
-
 
 
 

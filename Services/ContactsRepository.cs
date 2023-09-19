@@ -104,6 +104,32 @@ namespace MyContacts.Services
             }
         }
 
+        // این متد قابلیت حذف تمام مخاطب های مورد نظر را امکان پذیر میکنن ، البته مخاطب های کاربری که وارد برنامه شده
+        // this method can remove all the contacts , of course contacts of the user that just log in to application
+        public bool DeleteAll(string LinkName)
+        {
+            SqlConnection Connection = new SqlConnection(ConnectionString);
+            try
+            {
+                string query = "Delete from MyContacts where LinkId = @LinkName";
+                SqlCommand commander = new SqlCommand(query, Connection);
+                commander.Parameters.AddWithValue("@LinkName", LinkName);
+                Connection.Open();
+                commander.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+        }
+
+
         // این متد قابلیت بروزرسانی مخاطب را به برنامه ما اضافه میکند
         // this method do the update of contacts in our program
         public bool Update(int ContactId, string Name, string Family, string Age, string Phone, string Email, string Address)
@@ -340,6 +366,7 @@ namespace MyContacts.Services
 
         }
 
+    
        
 
         }
