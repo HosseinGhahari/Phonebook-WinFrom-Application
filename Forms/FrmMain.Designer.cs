@@ -55,6 +55,8 @@
             this.BtnManage = new System.Windows.Forms.Button();
             this.myContactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.LblUserName = new System.Windows.Forms.Label();
+            this.LabelContacts = new System.Windows.Forms.Label();
+            this.lblContactsCount = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgContacts)).BeginInit();
@@ -322,11 +324,33 @@
             this.LblUserName.AutoSize = true;
             this.LblUserName.BackColor = System.Drawing.Color.AliceBlue;
             this.LblUserName.Font = new System.Drawing.Font("IRANSans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblUserName.Location = new System.Drawing.Point(850, 15);
+            this.LblUserName.Location = new System.Drawing.Point(850, 4);
             this.LblUserName.Name = "LblUserName";
             this.LblUserName.Size = new System.Drawing.Size(48, 27);
             this.LblUserName.TabIndex = 18;
             this.LblUserName.Text = "label";
+            // 
+            // LabelContacts
+            // 
+            this.LabelContacts.AutoSize = true;
+            this.LabelContacts.BackColor = System.Drawing.Color.AliceBlue;
+            this.LabelContacts.Font = new System.Drawing.Font("IRANSans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelContacts.Location = new System.Drawing.Point(592, 2);
+            this.LabelContacts.Name = "LabelContacts";
+            this.LabelContacts.Size = new System.Drawing.Size(188, 27);
+            this.LabelContacts.TabIndex = 19;
+            this.LabelContacts.Text = "Numbers Of Contacts :";
+            // 
+            // lblContactsCount
+            // 
+            this.lblContactsCount.AutoSize = true;
+            this.lblContactsCount.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblContactsCount.Font = new System.Drawing.Font("IRANSans", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContactsCount.Location = new System.Drawing.Point(745, 3);
+            this.lblContactsCount.Name = "lblContactsCount";
+            this.lblContactsCount.Size = new System.Drawing.Size(48, 27);
+            this.lblContactsCount.TabIndex = 20;
+            this.lblContactsCount.Text = "label";
             // 
             // FrmMain
             // 
@@ -334,6 +358,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(995, 690);
+            this.Controls.Add(this.lblContactsCount);
+            this.Controls.Add(this.LabelContacts);
             this.Controls.Add(this.LblUserName);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -385,6 +411,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         public System.Windows.Forms.DataGridView DgContacts;
         private System.Windows.Forms.Button BtnLogOut;
+        public System.Windows.Forms.Label LabelContacts;
+        public System.Windows.Forms.Label lblContactsCount;
     }
 }
 

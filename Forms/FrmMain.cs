@@ -50,20 +50,27 @@ namespace MyContacts
 
             InitializeComponent();
             repository = new ContactsRepository(); 
-
         }
 
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+
+
+
             // در این قسمت متن لوگین را ما از نام کاربری میگیریم و به لیبل صفحه اصلی انتقال میدهیم برای نمایش
             // send username text to label in main form for showing welcome
-         
+
             LblUserName.Text =  "Welcome " + FrmLogin.SendText.ToLower();
 
             // این متد دیتا گرید را ریفرش میکند
             // update datagrid
             DbAccess();
+
+            // تعداد مخاطب هان را نشان میدهد
+            // show numbers of contacts
+            lblContactsCount.Text = DgContacts.Rows.Count.ToString();
+
         }
 
 
