@@ -17,7 +17,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace MyContacts
 {
 
-    
     public partial class FrmUserSetting : Form
     {
 
@@ -31,7 +30,7 @@ namespace MyContacts
             DgUsers.AutoGenerateColumns = false;
             DgUsers.DataSource = repository.SelectUsers();    
         }
-
+        
         
         IContactRepository repository;
         public FrmUserSetting()
@@ -42,7 +41,7 @@ namespace MyContacts
 
         private void FrmUserSetting_Load(object sender, EventArgs e)
         {
-            DbUpdate();      
+            DbUpdate();
         }
 
         private void BtnUpdateUsers_Click(object sender, EventArgs e)
@@ -51,7 +50,7 @@ namespace MyContacts
             // check if row of data grid is selected
             if (DgUsers.CurrentRow != null) 
             {
-               
+
                 // در این بخش بررسی میشود که کاربری که انتخاب میکنید
                 // همان کاربری باشد که وارد برنامه شده تا اجازه بروز رسانی بدهد
                 // this section check the user you wanna edit is the same user
@@ -66,6 +65,9 @@ namespace MyContacts
                 // we call update form and send the user for updating
                 else
                 {
+                    //FrmUserCheck frmUserCheck = new FrmUserCheck();
+                    //frmUserCheck.ShowDialog();
+
                     FrmUpdateUser frm = new FrmUpdateUser();
                     int UserId = int.Parse(DgUsers.CurrentRow.Cells[0].Value.ToString());
                     frm.UserId = UserId;
@@ -116,7 +118,7 @@ namespace MyContacts
                         {
                             repository.DeleteUser(UserId, UserName, LoginUserName);
                             DbUpdate();
-                            Application.Exit();
+                            Application.Restart();
                         }
                     }
                     else

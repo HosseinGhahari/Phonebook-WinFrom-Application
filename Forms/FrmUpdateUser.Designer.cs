@@ -41,7 +41,7 @@
             // UpdateTxtPassRepeated
             // 
             this.UpdateTxtPassRepeated.AcceptsReturn = true;
-            this.UpdateTxtPassRepeated.Location = new System.Drawing.Point(142, 341);
+            this.UpdateTxtPassRepeated.Location = new System.Drawing.Point(134, 319);
             this.UpdateTxtPassRepeated.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.UpdateTxtPassRepeated.Multiline = true;
             this.UpdateTxtPassRepeated.Name = "UpdateTxtPassRepeated";
@@ -51,15 +51,15 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(139, 301);
+            this.label3.Location = new System.Drawing.Point(131, 284);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 26);
+            this.label3.Size = new System.Drawing.Size(186, 26);
             this.label3.TabIndex = 20;
-            this.label3.Text = "Repeat Password :";
+            this.label3.Text = "Repeat New Password :";
             // 
             // UpdateTxtPass
             // 
-            this.UpdateTxtPass.Location = new System.Drawing.Point(140, 219);
+            this.UpdateTxtPass.Location = new System.Drawing.Point(134, 212);
             this.UpdateTxtPass.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.UpdateTxtPass.Multiline = true;
             this.UpdateTxtPass.Name = "UpdateTxtPass";
@@ -69,15 +69,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(138, 179);
+            this.label2.Location = new System.Drawing.Point(132, 175);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 26);
+            this.label2.Size = new System.Drawing.Size(129, 26);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Password :";
+            this.label2.Text = "New Password :";
             // 
             // UpdateTxtUser
             // 
-            this.UpdateTxtUser.Location = new System.Drawing.Point(140, 104);
+            this.UpdateTxtUser.Location = new System.Drawing.Point(134, 109);
             this.UpdateTxtUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.UpdateTxtUser.Multiline = true;
             this.UpdateTxtUser.Name = "UpdateTxtUser";
@@ -87,7 +87,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(139, 65);
+            this.label1.Location = new System.Drawing.Point(133, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 26);
             this.label1.TabIndex = 16;
@@ -95,7 +95,7 @@
             // 
             // BtnExit
             // 
-            this.BtnExit.Location = new System.Drawing.Point(147, 466);
+            this.BtnExit.Location = new System.Drawing.Point(144, 441);
             this.BtnExit.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.BtnExit.Name = "BtnExit";
             this.BtnExit.Size = new System.Drawing.Size(117, 55);
@@ -106,7 +106,7 @@
             // 
             // BtnUserUpdate
             // 
-            this.BtnUserUpdate.Location = new System.Drawing.Point(287, 466);
+            this.BtnUserUpdate.Location = new System.Drawing.Point(284, 441);
             this.BtnUserUpdate.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.BtnUserUpdate.Name = "BtnUserUpdate";
             this.BtnUserUpdate.Size = new System.Drawing.Size(117, 55);
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 610);
+            this.ClientSize = new System.Drawing.Size(554, 594);
             this.Controls.Add(this.UpdateTxtPassRepeated);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.UpdateTxtPass);

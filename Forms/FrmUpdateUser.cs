@@ -78,9 +78,12 @@ namespace MyContacts
 
             if (IsValid())
             {
+
                 repository.UpdateUser(UserId, UpdateTxtUser.Text, UpdateTxtPass.Text);
-                MessageBox.Show("Edit is done");
+                MessageBox.Show("Edit is done , Program will be restarted");
                 DialogResult = DialogResult.OK;
+                Application.Restart();
+
             }
         }
     }
