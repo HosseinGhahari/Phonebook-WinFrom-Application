@@ -32,6 +32,7 @@ namespace MyContacts
 
 
         // این متد برای اپدیت نگه داشتن تعداد مخاطب ها بعد از عملیات هایی مثل حذف و اضافه و.. استفاده میشود
+        // this method keep on updating Number of contacts 
         private void ContactsCount()
         {
             lblContactsCount.Text = DgContacts.Rows.Count.ToString();
